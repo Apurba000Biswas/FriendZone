@@ -48,7 +48,7 @@ public class DataRecyclerAdapter extends RecyclerView.Adapter<DataRecyclerAdapte
     public static class ViewHolder extends
             RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public View mView;
+        private View mView;
         private List<DataModel> mDataset;
         public ImageView imageView;
         public TextView tvName;
@@ -60,7 +60,7 @@ public class DataRecyclerAdapter extends RecyclerView.Adapter<DataRecyclerAdapte
             mView = v;
             v.setOnClickListener(this);
             mDataset = dataset;
-            //mListner = listener;
+            mListner = listener;
             initAllViews();
         }
         // initializes all fields to its appropriate view
@@ -71,9 +71,9 @@ public class DataRecyclerAdapter extends RecyclerView.Adapter<DataRecyclerAdapte
 
         @Override
         public void onClick(View view) {
-            //DataModel clickedItem = mDataset.get(getAdapterPosition());
+            DataModel clickedItem = mDataset.get(getAdapterPosition());
             // now pass this clicked item to your interface object
-            //mListner.onClicked(clickedItem);
+            mListner.onClick(clickedItem);
         }
     }
 

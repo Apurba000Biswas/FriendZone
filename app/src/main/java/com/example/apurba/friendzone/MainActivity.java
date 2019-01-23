@@ -2,6 +2,7 @@ package com.example.apurba.friendzone;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements DataRVClickedList
         list.add(new DataModel("Brandon Stark", R.drawable.bran_stark));
 
         recyclerView.setHasFixedSize(true); // This sittings to improve performance
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
         DataRecyclerAdapter mAdapter = new DataRecyclerAdapter (list, this);
         recyclerView.setAdapter(mAdapter);
