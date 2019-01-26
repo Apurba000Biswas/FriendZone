@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.apurba.friendzone.DataFactory;
 import com.example.apurba.friendzone.DataModel;
@@ -43,4 +44,14 @@ public class MainFragment extends Fragment {
         return rootView;
     }
 
+
+    public void showGivenRating(float rating){
+        if (rating == 0){
+            Toast.makeText(getContext(), "You did not rate this user", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getContext(), "You rated this user "
+                    + rating + " star", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 }
