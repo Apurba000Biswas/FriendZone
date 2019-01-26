@@ -12,7 +12,6 @@ import java.util.List;
 
 public class DataRecyclerAdapter extends RecyclerView.Adapter<DataRecyclerAdapter.ViewHolder>{
 
-
     private List<DataModel> mDataSet;
     private DataRVClickedListener mListener;
 
@@ -29,7 +28,6 @@ public class DataRecyclerAdapter extends RecyclerView.Adapter<DataRecyclerAdapte
                 parent,
                 false);
         return  new ViewHolder(view, mDataSet, mListener);
-
     }
 
     @Override
@@ -37,6 +35,7 @@ public class DataRecyclerAdapter extends RecyclerView.Adapter<DataRecyclerAdapte
         DataModel currentData = mDataSet.get(position);
         //holder.imageView.setText(currentData.getText1());
         holder.tvName.setText(currentData.getName());
+        holder.imageView.setImageResource(currentData.getImgId());
 
     }
 
