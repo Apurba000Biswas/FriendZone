@@ -18,6 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements DataRVClickedListener {
     private static final int REQ_CODE = 101;
+    private int backPressedCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +60,30 @@ public class MainActivity extends AppCompatActivity implements DataRVClickedList
 
         if (requestCode == REQ_CODE){
             try{
-                int givenRating = data.getIntExtra("Rating", -1);
-                Toast.makeText(this, "You rated this user " + givenRating + " star", Toast.LENGTH_SHORT).show();
+                float givenRating = data.getFloatExtra("Rating", -1);
+                Toast.makeText(this, "You rated this user "
+                        + givenRating + " star", Toast.LENGTH_SHORT).show();
             }catch (NullPointerException e){
-                Toast.makeText(this, "You did not rate this user", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "You did not rate this user"
+                        , Toast.LENGTH_SHORT).show();
             }
+        }
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        backPressedCount = 1;
+    }
 
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        if (backPressedCount == 2){
+            finish();
+        }else{
+            Toast.makeText(this, "Tap again to exit", Toast.LENGTH_SHORT).show();
+            backPressedCount++;
         }
     }
 }
